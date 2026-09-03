@@ -865,3 +865,735 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// ==================== NEXT-LEVEL SECTION OVERLAP (PINNING) ====================
+// Overlap karanna oni main sections tika select karagannawa
+const overlapSections = gsap.utils.toArray(
+  ".crib-hero, .crb-nw-welcome-sec, .crib-dashboard-section, .crib-impact-journey-section",
+);
+
+overlapSections.forEach((section, index) => {
+  // Anthima section eka pin karanne na (eka natural scroll wenna oni nisa)
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top top", // Section eka screen eke udatama awama pin wenawa
+    pin: true, // Section eka lock karanawa
+    pinSpacing: false, // Meka thama MAGIC eka! Meken thamai yata section ekata udata slide wenna ida denne
+    id: `overlap-${index}`,
+  });
+});
+
+// =========================================================================
+// SPLASH PAGE ENTRANCE ANIMATION (INDEX.HTML)
+// =========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".cs-splash")) {
+    // Top banner drops in
+    gsap.fromTo(
+      ".gs-splash-banner",
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+    );
+
+    // Ribbons drop down one by one
+    gsap.fromTo(
+      ".gs-splash-ribbon",
+      { y: -150, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "back.out(1.2)",
+        delay: 0.2,
+      },
+    );
+  }
+});
+
+/* ============================================================
+   MYREPORT - HERO GSAP ANIMATIONS
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+    // Hero Content Text & Buttons
+    heroTimeline
+      .from(".hero-content .hero-animate", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+      })
+      // Dashboard Shell
+      .from(
+        ".dashboard-shell",
+        {
+          x: 60,
+          y: 30,
+          rotationY: 15,
+          opacity: 0,
+          scale: 0.9,
+          duration: 1.2,
+        },
+        "-=0.6",
+      )
+      // Floating Widgets Pop-in
+      .from(
+        ".floating-widget",
+        {
+          y: 30,
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.8,
+          stagger: 0.15,
+        },
+        "-=0.6",
+      );
+
+    // Continuous Floating Animations
+    gsap.to(".widget-score", {
+      y: -15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+    gsap.to(".widget-payment", {
+      y: 15,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+    gsap.to(".widget-verified", {
+      y: -10,
+      duration: 3.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    // Dashboard Parallax Effect on Scroll
+    gsap.to(".dashboard-shell", {
+      y: -50,
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+  }
+});
+
+/* ============================================================
+   BENEFITS (BENTO GRID) GSAP ANIMATIONS
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.gsap && window.ScrollTrigger) {
+    // 1. Benefits Section Heading
+    gsap.from(".benefits .section-heading > *", {
+      scrollTrigger: {
+        trigger: ".benefits",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power3.out",
+    });
+
+    // 2. Bento Cards Pop-in Animation
+    gsap.from(".bento-card", {
+      scrollTrigger: {
+        trigger: ".bento-grid",
+        start: "top 75%",
+        toggleActions: "play none none reverse",
+      },
+      y: 60,
+      scale: 0.95,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "back.out(1.2)",
+    });
+
+    // ==========================================
+    // 🌟 INTERNAL CARD ANIMATIONS 🌟
+    // ==========================================
+
+    // A. Icons pop and rotate in
+    gsap.from(".bento-icon svg", {
+      scrollTrigger: {
+        trigger: ".bento-grid",
+        start: "top 75%",
+        toggleActions: "play none none reverse",
+      },
+      scale: 0,
+      rotation: -45,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.4,
+      ease: "back.out(2)",
+    });
+
+    // B. Card 1: Mini UI Rows slide in one by one
+    if (document.querySelector(".credit-mini-ui")) {
+      gsap.from(".credit-mini-row", {
+        scrollTrigger: {
+          trigger: ".bento-large",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        x: -20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.15,
+        delay: 0.6,
+        ease: "power3.out",
+      });
+    }
+
+    // C. Card 5: Score Circle Pop & Number Counter
+    if (document.querySelector(".decision-visual")) {
+      // Circle pops in
+      gsap.from(".decision-score", {
+        scrollTrigger: {
+          trigger: ".bento-wide",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        scale: 0.5,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.5,
+        ease: "elastic.out(1, 0.5)",
+      });
+
+      // Number counts up to 785
+      gsap.fromTo(
+        ".decision-score strong",
+        { innerHTML: 300 }, // Start number
+        {
+          innerHTML: 785, // End number
+          duration: 2,
+          delay: 0.8,
+          snap: { innerHTML: 1 }, // Keeps it as whole numbers (no decimals)
+          scrollTrigger: {
+            trigger: ".bento-wide",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+    }
+  }
+});
+
+/* ============================================================
+   APP PREVIEW SLIDER (HORIZONTAL PINNED SCROLL)
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (
+    window.gsap &&
+    window.ScrollTrigger &&
+    document.querySelector(".app-slider-section")
+  ) {
+    const sliderSection = document.querySelector(".app-slider-section");
+    const sliderTrack = document.querySelector(".gs-slider-track");
+
+    // Calculate the exact distance to move horizontally
+    // Track width minus one screen width (so it stops perfectly on the last slide)
+    const getScrollAmount = () =>
+      -(sliderTrack.scrollWidth - window.innerWidth);
+
+    // Create the timeline for the scrolljacking
+    let sliderTween = gsap.to(sliderTrack, {
+      x: getScrollAmount,
+      ease: "none", // Linear movement is best for scroll
+      scrollTrigger: {
+        trigger: sliderSection,
+        start: "top top", // When section hits the very top of the screen
+        end: () => `+=${sliderTrack.scrollWidth - window.innerWidth}`, // Scroll duration based on content width
+        pin: true, // Lock the screen!
+        scrub: 1, // Smooth scrubbing (1 second delay for smoothness)
+        invalidateOnRefresh: true, // Recalculate on window resize
+
+        // Update the tiny progress bar at the bottom
+        onUpdate: (self) => {
+          const progressBar = document.querySelector(".gs-progress");
+          if (progressBar) {
+            progressBar.style.width = self.progress * 100 + "%";
+          }
+        },
+      },
+    });
+  }
+});
+
+/* ============================================================
+   HOW IT WORKS (ADVANCED ROADMAP) GSAP ANIMATIONS
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (
+    window.gsap &&
+    window.ScrollTrigger &&
+    document.querySelector(".how-it-works")
+  ) {
+    // 1. Heading fades in
+    gsap.fromTo(
+      ".gs-step-head > *",
+      { y: 30, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".how-it-works",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+    );
+
+    // 2. Main Track fills horizontally
+    gsap.fromTo(
+      ".gs-rm-track",
+      { width: "0%" },
+      {
+        scrollTrigger: {
+          trigger: ".roadmap-wrapper",
+          start: "top 65%",
+          end: "center 40%",
+          scrub: 1,
+        },
+        width: "100%",
+        ease: "none",
+      },
+    );
+
+    // 3. Nodes Pop-in
+    gsap.fromTo(
+      ".gs-rm-node",
+      { scale: 0, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".roadmap-wrapper",
+          start: "top 65%",
+          toggleActions: "play none none reverse",
+        },
+        scale: 1,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.25,
+        delay: 0.1,
+        ease: "elastic.out(1, 0.6)",
+      },
+    );
+
+    // 4. Dashed connectors grow vertically
+    gsap.fromTo(
+      ".gs-rm-line",
+      { scaleY: 0, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".roadmap-wrapper",
+          start: "top 65%",
+          toggleActions: "play none none reverse",
+        },
+        scaleY: 1,
+        opacity: 1,
+        transformOrigin: "bottom",
+        duration: 0.5,
+        stagger: 0.25,
+        delay: 0.3,
+        ease: "power2.out",
+      },
+    );
+
+    // 5. Content Boxes slide in
+    gsap.fromTo(
+      ".gs-rm-step .rm-box",
+      { y: 40, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".roadmap-wrapper",
+          start: "top 65%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.25,
+        delay: 0.4,
+        ease: "back.out(1.2)",
+      },
+    );
+  }
+});
+
+/* ============================================================
+   INFORMATION & FINAL CTA - GSAP ANIMATIONS
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.gsap && window.ScrollTrigger) {
+    // 1. Information Section Heading
+    gsap.fromTo(
+      ".gs-info-head > *",
+      { y: 30, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".information",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+    );
+
+    // 2. Information Cards Pop Up
+    gsap.fromTo(
+      ".gs-info-card",
+      { y: 60, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".info-grid",
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+    );
+
+    // 3. Final CTA Content
+    gsap.fromTo(
+      ".gs-cta-item",
+      { y: 40, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".final-cta",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+      },
+    );
+
+    // 4. Subtle Parallax for CTA Background Pattern
+    gsap.to(".gs-cta-pattern", {
+      scrollTrigger: {
+        trigger: ".final-cta",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      },
+      y: 100,
+      ease: "none",
+    });
+  }
+});
+
+/* ============================================================
+   PRICING SECTION - GSAP ANIMATIONS
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  if (
+    window.gsap &&
+    window.ScrollTrigger &&
+    document.querySelector(".pricing")
+  ) {
+    // 1. Heading & Toggle Animation
+    gsap.fromTo(
+      ".gs-pricing-head > *",
+      { y: 30, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".pricing",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+    );
+
+    // 2. Pricing Cards Pop-in
+    gsap.fromTo(
+      ".gs-pricing-card",
+      { y: 60, scale: 0.95, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".pricing-grid",
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "back.out(1.2)",
+      },
+    );
+
+    // Optional: Simple Toggle Switch Logic (Visual only)
+    const toggleBtns = document.querySelectorAll(".toggle-option");
+    toggleBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        toggleBtns.forEach((b) => b.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  }
+});
+/* ============================================================
+   BUREAU GOVERNANCE - MODAL & GSAP REVEALS
+============================================================ */
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    var govModal = document.getElementById("govProfileModal");
+    var modalBox = document.getElementById("govModalBox");
+    var modalClose = govModal
+      ? govModal.querySelector(".gov-modal-close")
+      : null;
+    var lastFocus = null;
+
+    var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var hasGSAP = !!window.gsap;
+
+    if (!govModal) return; // Exit if not on Governance page
+
+    /* MODAL LOGIC */
+    window.openGovModal = function (cardElement) {
+      var name = cardElement.querySelector(".card-name").innerText;
+      var role = cardElement.querySelector(".card-role").innerText;
+      var bioHtml = cardElement.querySelector(".gov-hidden-bio").innerHTML;
+
+      lastFocus = cardElement;
+
+      document.getElementById("modalName").innerText = name;
+      document.getElementById("modalRole").innerText = role;
+      document.getElementById("modalBio").innerHTML = bioHtml;
+
+      govModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      document.getElementById("modalScrollArea").scrollTop = 0;
+
+      if (hasGSAP && !REDUCED) {
+        gsap.killTweensOf([govModal, modalBox, ".modal-reveal-elem"]);
+        const tl = gsap.timeline();
+        tl.fromTo(
+          govModal,
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.3, ease: "power2.out" },
+        )
+          .fromTo(
+            modalBox,
+            { scale: 0.95, y: 30, autoAlpha: 0 },
+            { scale: 1, y: 0, autoAlpha: 1, duration: 0.5, ease: "power4.out" },
+            "-=0.1",
+          )
+          .fromTo(
+            ".modal-reveal-elem",
+            { y: 20, autoAlpha: 0 },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: "power3.out",
+            },
+            "-=0.3",
+          );
+      } else {
+        govModal.style.opacity = 1;
+      }
+
+      setTimeout(function () {
+        modalClose.focus();
+      }, 100);
+    };
+
+    window.closeGovModal = function () {
+      var done = function () {
+        govModal.classList.remove("active");
+        document.body.style.overflow = "";
+        if (lastFocus) lastFocus.focus();
+      };
+
+      if (hasGSAP && !REDUCED) {
+        gsap.killTweensOf([govModal, modalBox]);
+        gsap
+          .timeline({ onComplete: done })
+          .to(modalBox, {
+            scale: 0.98,
+            y: 15,
+            autoAlpha: 0,
+            duration: 0.25,
+            ease: "power2.in",
+          })
+          .to(
+            govModal,
+            { autoAlpha: 0, duration: 0.2, ease: "power2.in" },
+            "-=0.1",
+          );
+      } else {
+        govModal.style.opacity = 0;
+        done();
+      }
+    };
+
+    govModal.addEventListener("click", function (e) {
+      if (e.target === this) closeGovModal();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && govModal.classList.contains("active"))
+        closeGovModal();
+    });
+
+    /* SCROLL REVEALS */
+    if (hasGSAP && window.ScrollTrigger && !REDUCED) {
+      gsap.registerPlugin(ScrollTrigger);
+      var D = { immediateRender: false };
+
+      gsap.from(
+        ".gov-hero-rise",
+        Object.assign({}, D, {
+          y: 30,
+          autoAlpha: 0,
+          duration: 0.9,
+          ease: "power4.out",
+          stagger: 0.1,
+          delay: 0.1,
+        }),
+      );
+
+      gsap.from(
+        ".gov-intro .gov-rise",
+        Object.assign({}, D, {
+          y: 25,
+          autoAlpha: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".gov-intro",
+            start: "top 85%",
+            once: true,
+          },
+        }),
+      );
+
+      gsap.from(
+        ".gov-card",
+        Object.assign({}, D, {
+          y: 40,
+          autoAlpha: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: { trigger: ".gov-grid", start: "top 85%", once: true },
+        }),
+      );
+    }
+  });
+})();
+/* ============================================================
+   DOWNLOADS PAGE - GSAP & TABS LOGIC
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const isDownloadsPage = document.querySelector(".dl-page-wrapper");
+  if (!isDownloadsPage) return; // Only run on downloads page
+
+  // 1. Initial Scroll Reveals
+  if (typeof gsap !== "undefined") {
+    gsap.from(".dl-hero-rise", {
+      y: 30,
+      autoAlpha: 0,
+      duration: 0.9,
+      ease: "power4.out",
+      stagger: 0.1,
+      delay: 0.1,
+    });
+
+    // Animate cards on initial load
+    gsap.from(".dl-card", {
+      y: 20,
+      autoAlpha: 0,
+      duration: 0.5,
+      ease: "power3.out",
+      stagger: 0.02,
+      delay: 0.4,
+    });
+  }
+
+  // 2. Custom Tab Logic for "All" functionality
+  const tabBtns = document.querySelectorAll(".dl-tab-btn");
+  const tabPanels = document.querySelectorAll(".dl-panel");
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Remove active states from buttons and panels
+      tabBtns.forEach((b) => b.classList.remove("active"));
+      tabPanels.forEach((p) => p.classList.remove("active"));
+
+      // Add active state to clicked button
+      btn.classList.add("active");
+      const targetTabId = btn.getAttribute("data-tab");
+
+      let targetCards;
+
+      // Logic: If "All", show everything. Otherwise show specific tab.
+      if (targetTabId === "tab-all") {
+        tabPanels.forEach((p) => p.classList.add("active")); // Show all
+        targetCards = document.querySelectorAll(".dl-panel .dl-card");
+      } else {
+        const targetPanel = document.getElementById(targetTabId);
+        targetPanel.classList.add("active"); // Show selected
+        targetCards = targetPanel.querySelectorAll(".dl-card");
+      }
+
+      // GSAP Transition for cards when switching tabs
+      if (typeof gsap !== "undefined") {
+        gsap.fromTo(
+          targetCards,
+          { y: 20, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.4,
+            stagger: 0.02,
+            ease: "power3.out",
+          },
+        );
+      }
+    });
+  });
+});
