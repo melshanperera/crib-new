@@ -1160,19 +1160,20 @@ body {
 .dash-visual-col {
   position: relative;
   width: 100%;
-  height: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  /* Me line eken thama lassanata Dashboard eka 15% kin podi wenne */
+  transform: scale(0.95);
+  transform-origin: center right; /* Right side ekata bara wela podi wenna */
 }
 
 /* Dashboard Wrapper (Flat, Normal Size) */
 .dash-3d-wrapper {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  max-width: 820px; /* Dashboard is now a normal, perfectly readable size */
-  transform: none; /* 3D removed to stop overlap */
-  box-shadow: 0 30px 60px -15px rgba(8, 26, 60, 0.15); /* Clean flat shadow */
-  border-radius: 20px;
+  max-width: 700px; /* Kalin thibba loku gaana meken adu wenawa */
   margin: 0 auto;
 }
 
@@ -3464,7 +3465,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  /* Me line eken thama uda kalla kapena eka nawaththanne */
+  object-position: top center;
 }
 .news-card-v2:hover .nc2-img-box img {
   transform: scale(1.06);
@@ -3557,6 +3559,19 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  .dash-visual-col {
+    transform: scale(0.9); /* Tablet waladi poddak loku karanawa */
+    transform-origin: center center;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dash-visual-col {
+    transform: scale(0.8); /* Mobile eke thawa podi karanawa */
   }
 }
 
