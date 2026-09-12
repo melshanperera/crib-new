@@ -1067,7 +1067,7 @@
       }
     </style>
     <style>
-      /* COMPLETE HEADER STYLES */
+/* COMPLETE HEADER STYLES */
 
       .crib-hdr-wrapper {
         --ch-navy: #1b325f;
@@ -2574,7 +2574,7 @@
       <div class="crib-main-nav-container">
         <div class="crib-main-nav">
           <!-- LOGO -->
-          <a href="home.html" class="crib-logo" aria-label="CRIB home">
+          <a href="home-ewn.html" class="crib-logo" aria-label="CRIB home">
             <img
               src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/crib-logo-new.png"
               alt="CRIB Sri Lanka"
@@ -2584,7 +2584,7 @@
           <!-- NAVIGATION -->
           <ul class="crib-menu">
             <li>
-              <a href="home.html">Home</a>
+              <a href="home-ewn.html">Home</a>
             </li>
 
             <li>
@@ -2592,7 +2592,7 @@
             </li>
 
             <li class="has-dropdown">
-              <a href="home.html#services">
+              <a href="home-ewn.html#services">
                 Our Services
                 <svg
                   viewBox="0 0 24 24"
@@ -5917,10 +5917,7 @@
         }
         if (sharedHeader && "ResizeObserver" in window)
           new ResizeObserver(updateHeaderHeight).observe(sharedHeader);
-        else
-          window.addEventListener("resize", updateHeaderHeight, {
-            passive: true,
-          });
+        else window.addEventListener("resize", updateHeaderHeight, { passive: true });
         updateHeaderHeight();
 
         // Motion is optional; no whole-page pinning, fixed section heights or hidden fallback content.
@@ -5999,7 +5996,7 @@
       })();
     </script>
     <script>
-      (function () {
+(function () {
         const dock = document.getElementById("cq-dock");
         if (!dock || dock.dataset.ready) return;
 

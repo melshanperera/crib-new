@@ -1,0 +1,141 @@
+/* Header typography */
+.crib-hdr-wrapper {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.crib-hdr-wrapper .crib-main-nav {
+  gap: 18px;
+}
+
+.crib-hdr-wrapper .crib-menu {
+  gap: clamp(12px, 1.4vw, 20px);
+}
+
+.crib-hdr-wrapper .crib-menu > li > a {
+  font-family: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.crib-hdr-wrapper .crib-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Language selector */
+.crib-hdr-wrapper .cnh-language {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 8%);
+}
+
+/* Keep these selectors separate from the old language buttons */
+.crib-hdr-wrapper .cnh-language-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 43px;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #173354;
+  font-family:
+    "Inter", "Noto Sans Sinhala", "Noto Sans Tamil", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.crib-hdr-wrapper .cnh-language-option[href]:hover {
+  background: #edf3fb;
+  color: #0477de;
+}
+
+/* Current language */
+.crib-hdr-wrapper .cnh-language-option[aria-current="page"] {
+  background: #d82845;
+  color: #fff;
+  box-shadow: 0 3px 8px rgb(216 40 69 / 20%);
+}
+
+.crib-hdr-wrapper .cnh-language-option[aria-current="page"]:hover {
+  background: #bd203b;
+  color: #fff;
+}
+
+/* Language links that have not been supplied */
+.crib-hdr-wrapper .cnh-language-option[aria-disabled="true"] {
+  color: #718095;
+  cursor: default;
+}
+
+.crib-hdr-wrapper .cnh-language-option:focus-visible {
+  outline: 3px solid #0477de;
+  outline-offset: 3px;
+}
+
+/* When the existing header changes to white on scroll */
+.crib-hdr-wrapper.scrolled .cnh-language {
+  background: #f0f4f9;
+  border-color: #dce5ef;
+  box-shadow: none;
+}
+
+/* Mobile: retain logo + languages in the main navbar */
+@media (max-width: 1150px) {
+  .crib-hdr-wrapper .crib-main-nav {
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .crib-hdr-wrapper .crib-nav-right {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .crib-hdr-wrapper .crib-main-nav {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+
+  .crib-hdr-wrapper .crib-logo img {
+    height: 33px;
+  }
+
+  .crib-hdr-wrapper .cnh-language {
+    gap: 2px;
+    padding: 3px;
+    border-radius: 9px;
+  }
+
+  .crib-hdr-wrapper .cnh-language-option {
+    min-width: 37px;
+    min-height: 38px;
+    padding-inline: 8px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crib-hdr-wrapper .cnh-language-option {
+    transition: none;
+  }
+}
