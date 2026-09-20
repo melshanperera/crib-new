@@ -2515,7 +2515,140 @@
         box-shadow: none;
         padding: 0;
       }
-    </style>
+    
+      /* ==========================================
+         UPDATE — AWARDS SECTION (ABOVE FOOTER)
+      ========================================== */
+      #cr-awards {
+        padding: 40px 0;
+        background: #ffffff !important;
+        margin-bottom: 60px;
+        border-top: 1px solid #e9edf4;
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      #cr-awards,
+      #cr-awards * {
+        box-sizing: border-box;
+      }
+
+      #cr-awards .cr-awards-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        width: min(1400px, calc(100% - 48px));
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      #cr-awards .cr-awards-label {
+        margin: 0;
+        color: #6d7b91;
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+
+      #cr-awards .cr-awards-logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+      }
+
+      #cr-awards .cr-award {
+        display: grid;
+        place-items: center;
+        width: 150px;
+        height: 72px;
+      }
+
+      #cr-awards .cr-award img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      @media (max-width: 600px) {
+        #cr-awards {
+          padding: 32px 0;
+        }
+
+        #cr-awards .cr-awards-logos {
+          gap: 18px;
+        }
+
+        #cr-awards .cr-award {
+          width: 130px;
+          height: 62px;
+        }
+      }
+
+      /* ==========================================
+         UPDATE — FOOTER LOGO + SOCIAL BRAND COLOURS
+      ========================================== */
+      #cf-footer .cf-logo {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      #cf-footer .cf-socials a.cf-social-facebook {
+        --cf-social: #1877f2;
+      }
+
+      #cf-footer .cf-socials a.cf-social-linkedin {
+        --cf-social: #0a66c2;
+      }
+
+      #cf-footer .cf-socials a.cf-social-youtube {
+        --cf-social: #ff0000;
+      }
+
+      #cf-footer .cf-socials a.cf-social,
+      #cf-footer .cf-socials a.cf-social:hover {
+        background: var(--cf-social);
+        border-color: var(--cf-social);
+        color: #ffffff;
+      }
+
+      #cf-footer .cf-socials a.cf-social:hover {
+        filter: brightness(1.12);
+      }
+
+      /* ==========================================
+         UPDATE — GOVERNANCE CARDS: CHAIRMAN NAVY ON EVERY CARD
+      ========================================== */
+      #cg-page .cg-card {
+        border-color: #d0dae5;
+      }
+
+      #cg-page .cg-card .cg-card-body {
+        background: #102747;
+        border-color: #102747;
+      }
+
+      #cg-page .cg-card :is(.cg-name, .cg-open) {
+        color: #ffffff;
+      }
+
+      #cg-page .cg-card .cg-role {
+        color: #b1c3d9;
+      }
+
+      #cg-page .cg-card .cg-open {
+        border-color: #ffffff25;
+      }
+
+      #cg-page .cg-card .cg-open span {
+        color: #ffffff;
+        background: var(--cg-red);
+      }
+</style>
   </head>
   <body>
     <header class="crib-hdr-wrapper">
@@ -3608,6 +3741,31 @@
         </svg>
       </button>
     </aside>
+    <!-- AWARDS & RECOGNITION -->
+    <section id="cr-awards" aria-label="Awards and recognition">
+      <div class="cr-awards-wrap">
+        <p class="cr-awards-label">Awards & recognition</p>
+
+        <div class="cr-awards-logos">
+          <div class="cr-award">
+            <img
+              src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/merit-best-corporate-website.png"
+              alt="Best Corporate Website Merit Winner 2023"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="cr-award">
+            <img
+              src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/tags-2025.png"
+              alt="CA Sri Lanka TAGS Awards Compliant 2025"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer id="cf-footer">
       <div class="cf-wrap">
         <!-- COMPACT CALL TO ACTION -->
@@ -3684,7 +3842,11 @@
 
             <!-- Replace # with the official social profile URLs -->
             <nav class="cf-socials" aria-label="Social media">
-              <a href="#" aria-label="CRIB on Facebook">
+              <a
+                href="#"
+                class="cf-social cf-social-facebook"
+                aria-label="CRIB on Facebook"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M14 22v-9h3l.5-4H14V7c0-1 .3-2 2-2h2V1.5C17.4 1.3 16.3 1 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z"
@@ -3692,7 +3854,11 @@
                 </svg>
               </a>
 
-              <a href="#" aria-label="CRIB on LinkedIn">
+              <a
+                href="#"
+                class="cf-social cf-social-linkedin"
+                aria-label="CRIB on LinkedIn"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M5.4 7.8H1.8V22h3.6zM3.6 1a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2zM22 13.8c0-4.2-2.2-6.2-5.1-6.2-2.4 0-3.4 1.3-4 2.2v-2H9.3V22h3.6v-7.9c0-2.1.4-4.1 2.9-4.1 2.5 0 2.6 2.4 2.6 4.2V22H22z"
@@ -3700,7 +3866,11 @@
                 </svg>
               </a>
 
-              <a href="#" aria-label="CRIB on YouTube">
+              <a
+                href="#"
+                class="cf-social cf-social-youtube"
+                aria-label="CRIB on YouTube"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     fill-rule="evenodd"
@@ -3712,28 +3882,6 @@
           </div>
         </div>
 
-        <!-- ORIGINAL AWARD LOGOS -->
-        <div class="cf-recognition">
-          <span class="cf-recognition-copy">Awards & recognition</span>
-
-          <div class="cf-awards">
-            <div class="cf-award">
-              <img
-                src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/merit-best-corporate-website.png"
-                alt="Best Corporate Website Merit Winner 2023"
-                loading="lazy"
-              />
-            </div>
-
-            <div class="cf-award">
-              <img
-                src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/tags-2025.png"
-                alt="CA Sri Lanka TAGS Awards Compliant 2025"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
 
         <!-- COPYRIGHT -->
         <div class="cf-bottom">

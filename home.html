@@ -19,7 +19,7 @@
       body {
         margin: 0;
         padding: 0;
-        background: #0a1832;
+        /* background: #0a1832; */
       } /* CRIB hero refresh. Scoped to this component; shared page styles stay intact. */
       .crh-hero {
         --crh-red: #d82845;
@@ -6101,6 +6101,140 @@
         box-shadow: none;
         padding: 0;
       }
+      /* ==========================================
+         UPDATE — HERO 3 TABS
+      ========================================== */
+      .crh-controls {
+        max-width: 1000px;
+      }
+
+      .crh-tabs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      @media (max-width: 650px) {
+        .crh-tabs {
+          gap: 10px;
+        }
+      }
+
+      /* ==========================================
+         UPDATE — SERVICES: IMAGES IN ALL 3 BOXES
+      ========================================== */
+      #services .csv-panel .csv-personal-photo,
+      #services .csv-panel:hover .csv-personal-photo {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none;
+      }
+
+      /* Card 03 image — sit flush on the bottom edge instead of floating */
+      #services .csv-panel.csv-institutions .csv-personal-photo,
+      #services .csv-panel.csv-institutions.is-active .csv-personal-photo {
+        bottom: 0;
+        height: 82%;
+      }
+
+      #services .csv-panel.csv-institutions .csv-personal-photo img {
+        object-position: center bottom;
+      }
+
+      /* ==========================================
+         UPDATE — AWARDS SECTION (ABOVE FOOTER)
+      ========================================== */
+      #cr-awards {
+        padding: 40px 0;
+        background: #ffffff !important;
+        margin-bottom: 60px;
+        border-top: 1px solid #e9edf4;
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      #cr-awards,
+      #cr-awards * {
+        box-sizing: border-box;
+      }
+
+      #cr-awards .cr-awards-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        width: min(1400px, calc(100% - 48px));
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      #cr-awards .cr-awards-label {
+        margin: 0;
+        color: #6d7b91;
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+
+      #cr-awards .cr-awards-logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+      }
+
+      #cr-awards .cr-award {
+        display: grid;
+        place-items: center;
+        width: 150px;
+        height: 72px;
+      }
+
+      #cr-awards .cr-award img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      @media (max-width: 600px) {
+        #cr-awards {
+          padding: 32px 0;
+        }
+
+        #cr-awards .cr-awards-logos {
+          gap: 18px;
+        }
+
+        #cr-awards .cr-award {
+          width: 130px;
+          height: 62px;
+        }
+      }
+
+      /* ==========================================
+         UPDATE — FOOTER SOCIAL BRAND COLOURS
+      ========================================== */
+      #cf-footer .cf-socials a.cf-social-facebook {
+        --cf-social: #1877f2;
+      }
+
+      #cf-footer .cf-socials a.cf-social-linkedin {
+        --cf-social: #0a66c2;
+      }
+
+      #cf-footer .cf-socials a.cf-social-youtube {
+        --cf-social: #ff0000;
+      }
+
+      #cf-footer .cf-socials a.cf-social,
+      #cf-footer .cf-socials a.cf-social:hover {
+        background: var(--cf-social);
+        border-color: var(--cf-social);
+        color: #ffffff;
+      }
+
+      #cf-footer .cf-socials a.cf-social:hover {
+        filter: brightness(1.12);
+      }
     </style>
   </head>
   <body>
@@ -6347,6 +6481,13 @@
             decoding="async"
           />
         </div>
+        <div class="crh-image">
+          <img
+            src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/Joyful-Family-Moment-in-a-Modern-Home.png"
+            alt=""
+            decoding="async"
+          />
+        </div>
       </div>
       <div class="crh-shade" aria-hidden="true"></div>
       <div class="crh-panels">
@@ -6429,6 +6570,47 @@
             >
           </div>
         </div>
+        <div
+          class="crh-panel"
+          id="crh-panel-3"
+          role="tabpanel"
+          aria-labelledby="crh-tab-3"
+          aria-hidden="true"
+          inert
+        >
+          <p class="crh-eyebrow" data-crh-reveal>
+            Confidence for every family.
+          </p>
+          <h2 class="crh-title">
+            <span class="crh-line"
+              ><span data-crh-reveal>Plan Today.</span></span
+            >
+            <span class="crh-line"
+              ><span data-crh-reveal>Build The Home</span></span
+            >
+            <span class="crh-line"
+              ><span class="crh-soft" data-crh-reveal>You Dream Of.</span></span
+            >
+          </h2>
+          <p class="crh-copy" data-crh-reveal>
+            Knowing your credit standing helps you plan ahead with confidence —
+            for your home, your family and the milestones that matter most.
+          </p>
+          <div class="crh-actions" data-crh-reveal>
+            <a
+              class="crh-primary"
+              href="https://crib-new.vercel.app/education.html"
+              tabindex="-1"
+              >Get MyReport</a
+            >
+            <a
+              class="crh-secondary"
+              href="https://crib-new.vercel.app/home.html#journey"
+              tabindex="-1"
+              >Your Credit Journey</a
+            >
+          </div>
+        </div>
       </div>
       <div class="crh-controls" hidden>
         <div
@@ -6468,6 +6650,24 @@
             <span class="crh-tab-number" aria-hidden="true">02</span>
             <span
               ><strong>Our role</strong><small>A stronger economy</small></span
+            >
+          </button>
+          <button
+            class="crh-tab"
+            id="crh-tab-3"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="crh-panel-3"
+            tabindex="-1"
+          >
+            <span class="crh-track" aria-hidden="true"
+              ><span class="crh-fill"></span
+            ></span>
+            <span class="crh-tab-number" aria-hidden="true">03</span>
+            <span
+              ><strong>Your plans</strong
+              ><small>Milestones that matter</small></span
             >
           </button>
         </div>
@@ -6741,6 +6941,15 @@
                 </span>
               </a>
             </div>
+
+            <div class="csv-personal-photo" aria-hidden="true">
+              <img
+                src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/ChatGPT-Image-Aug-23-2026-02_37_04-PM.png"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </article>
 
           <!-- 03: FINANCIAL INSTITUTIONS -->
@@ -6768,13 +6977,14 @@
               </a>
             </div>
 
-            <span class="csv-institution-icon" aria-hidden="true">
-              <svg viewBox="0 0 80 80">
-                <path d="M10 30 40 12l30 18" />
-                <path d="M14 34h52M12 66h56M8 72h64" />
-                <path d="M20 35v24M33 35v24M47 35v24M60 35v24" />
-              </svg>
-            </span>
+            <div class="csv-personal-photo" aria-hidden="true">
+              <img
+                src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/Firefly-11.png"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </article>
         </div>
 
@@ -7711,6 +7921,32 @@
         </svg>
       </button>
     </aside>
+
+    <!-- AWARDS & RECOGNITION -->
+    <section id="cr-awards" aria-label="Awards and recognition">
+      <div class="cr-awards-wrap">
+        <p class="cr-awards-label">Awards & recognition</p>
+
+        <div class="cr-awards-logos">
+          <div class="cr-award">
+            <img
+              src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/merit-best-corporate-website.png"
+              alt="Best Corporate Website Merit Winner 2023"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="cr-award">
+            <img
+              src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/tags-2025.png"
+              alt="CA Sri Lanka TAGS Awards Compliant 2025"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer id="cf-footer">
       <div class="cf-wrap">
         <!-- COMPACT CALL TO ACTION -->
@@ -7787,7 +8023,11 @@
 
             <!-- Replace # with the official social profile URLs -->
             <nav class="cf-socials" aria-label="Social media">
-              <a href="#" aria-label="CRIB on Facebook">
+              <a
+                href="#"
+                class="cf-social cf-social-facebook"
+                aria-label="CRIB on Facebook"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M14 22v-9h3l.5-4H14V7c0-1 .3-2 2-2h2V1.5C17.4 1.3 16.3 1 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z"
@@ -7795,7 +8035,11 @@
                 </svg>
               </a>
 
-              <a href="#" aria-label="CRIB on LinkedIn">
+              <a
+                href="#"
+                class="cf-social cf-social-linkedin"
+                aria-label="CRIB on LinkedIn"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M5.4 7.8H1.8V22h3.6zM3.6 1a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2zM22 13.8c0-4.2-2.2-6.2-5.1-6.2-2.4 0-3.4 1.3-4 2.2v-2H9.3V22h3.6v-7.9c0-2.1.4-4.1 2.9-4.1 2.5 0 2.6 2.4 2.6 4.2V22H22z"
@@ -7803,7 +8047,11 @@
                 </svg>
               </a>
 
-              <a href="#" aria-label="CRIB on YouTube">
+              <a
+                href="#"
+                class="cf-social cf-social-youtube"
+                aria-label="CRIB on YouTube"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     fill-rule="evenodd"
@@ -7812,29 +8060,6 @@
                 </svg>
               </a>
             </nav>
-          </div>
-        </div>
-
-        <!-- ORIGINAL AWARD LOGOS -->
-        <div class="cf-recognition">
-          <span class="cf-recognition-copy">Awards & recognition</span>
-
-          <div class="cf-awards">
-            <div class="cf-award">
-              <img
-                src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/merit-best-corporate-website.png"
-                alt="Best Corporate Website Merit Winner 2023"
-                loading="lazy"
-              />
-            </div>
-
-            <div class="cf-award">
-              <img
-                src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/tags-2025.png"
-                alt="CA Sri Lanka TAGS Awards Compliant 2025"
-                loading="lazy"
-              />
-            </div>
           </div>
         </div>
 
@@ -7870,7 +8095,7 @@
         const toggle = hero.querySelector(".crh-toggle");
         const status = hero.querySelector(".crh-status");
         const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-        const duration = 8000;
+        const duration = 5000;
         let current = 0,
           busy = false,
           elapsed = 0,
@@ -7964,7 +8189,7 @@
                   { opacity: 1, transform: "translateY(0)" },
                   { opacity: 0, transform: "translateY(-14px)" },
                 ],
-                { duration: 180, easing: "ease-in", fill: "forwards" },
+                { duration: 120, easing: "ease-in", fill: "forwards" },
               ),
             ),
           );
@@ -7985,7 +8210,7 @@
                 { clipPath: "inset(0 0 0 100%)", opacity: 0.6 },
                 { clipPath: "inset(0 0 0 0%)", opacity: 1 },
               ],
-              { duration: 1050, easing: "cubic-bezier(.22,1,.36,1)" },
+              { duration: 620, easing: "cubic-bezier(.22,1,.36,1)" },
             ),
             animate(
               images[index].querySelector("img"),
@@ -7993,7 +8218,7 @@
                 { transform: "scale(1.055) translateX(1.5%)" },
                 { transform: "scale(1) translateX(0)" },
               ],
-              { duration: 1450, easing: "cubic-bezier(.22,1,.36,1)" },
+              { duration: 850, easing: "cubic-bezier(.22,1,.36,1)" },
             ),
             ...incomingCopy.map((el, i) =>
               animate(
@@ -8003,8 +8228,8 @@
                   { opacity: 1, transform: "translateY(0)" },
                 ],
                 {
-                  duration: 750,
-                  delay: 120 + i * 65,
+                  duration: 460,
+                  delay: 70 + i * 40,
                   easing: "cubic-bezier(.22,1,.36,1)",
                   fill: "backwards",
                 },
