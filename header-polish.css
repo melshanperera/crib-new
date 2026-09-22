@@ -1,3 +1,11 @@
+/* Shared sizing keeps the header consistent across standalone pages. */
+.crib-hdr-wrapper,
+.crib-hdr-wrapper *,
+.crib-hdr-wrapper *::before,
+.crib-hdr-wrapper *::after {
+  box-sizing: border-box;
+}
+
 /* Header typography */
 .crib-hdr-wrapper {
   font-family: "Inter", system-ui, sans-serif;
@@ -5,6 +13,21 @@
 
 .crib-hdr-wrapper .crib-main-nav {
   gap: 18px;
+  min-height: 72px;
+  padding-block: 8px;
+}
+
+.crib-hdr-wrapper .crib-logo {
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.crib-hdr-wrapper .crib-logo img,
+.crib-hdr-wrapper.scrolled .crib-logo img {
+  width: auto;
+  height: 56px;
+  max-width: 200px;
+  object-fit: contain;
 }
 
 .crib-hdr-wrapper .crib-menu {
@@ -43,7 +66,7 @@
   align-items: center;
   justify-content: center;
   min-width: 43px;
-  min-height: 36px;
+  min-height: 40px;
   padding: 7px 10px;
   border: 0;
   border-radius: 7px;
@@ -81,8 +104,14 @@
 
 /* Language links that have not been supplied */
 .crib-hdr-wrapper .cnh-language-option[aria-disabled="true"] {
-  color: #718095;
+  color: #586a80;
   cursor: default;
+}
+
+.crib-hdr-wrapper .cnh-language-option[aria-disabled="true"]:hover {
+  background: transparent;
+  color: #586a80;
+  transform: none;
 }
 
 .crib-hdr-wrapper .cnh-language-option:focus-visible {
@@ -98,7 +127,7 @@
 }
 
 /* Mobile: retain logo + languages in the main navbar */
-@media (max-width: 1150px) {
+@media (max-width: 1180px) {
   .crib-hdr-wrapper .crib-main-nav {
     justify-content: space-between;
     gap: 12px;
@@ -116,8 +145,10 @@
     gap: 8px;
   }
 
-  .crib-hdr-wrapper .crib-logo img {
-    height: 33px;
+  .crib-hdr-wrapper .crib-logo img,
+  .crib-hdr-wrapper.scrolled .crib-logo img {
+    height: 48px;
+    max-width: 105px;
   }
 
   .crib-hdr-wrapper .cnh-language {
@@ -128,9 +159,26 @@
 
   .crib-hdr-wrapper .cnh-language-option {
     min-width: 37px;
-    min-height: 38px;
-    padding-inline: 8px;
+    min-height: 40px;
+    padding-inline: 7px;
     font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .crib-hdr-wrapper .crib-logo img,
+  .crib-hdr-wrapper.scrolled .crib-logo img {
+    max-width: 98px;
+  }
+
+  .crib-hdr-wrapper .crib-main-nav {
+    padding-inline: 8px;
+    column-gap: 6px;
+  }
+
+  .crib-hdr-wrapper .cnh-language-option {
+    min-width: 0;
+    padding-inline: 5px;
   }
 }
 

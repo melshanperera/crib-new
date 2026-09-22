@@ -1514,7 +1514,7 @@
         }
       }
 
-      @media (max-width: 1000px) {
+      @media (max-width: 1180px) {
         .crib-hdr-wrapper .crib-topbar {
           display: none;
         }
@@ -2517,77 +2517,6 @@
       }
     
       /* ==========================================
-         UPDATE — AWARDS SECTION (ABOVE FOOTER)
-      ========================================== */
-      #cr-awards {
-        padding: 40px 0;
-        background: #ffffff !important;
-        margin-bottom: 60px;
-        border-top: 1px solid #e9edf4;
-        font-family: "Inter", system-ui, sans-serif;
-      }
-
-      #cr-awards,
-      #cr-awards * {
-        box-sizing: border-box;
-      }
-
-      #cr-awards .cr-awards-wrap {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        width: min(1400px, calc(100% - 48px));
-        margin-inline: auto;
-        text-align: center;
-      }
-
-      #cr-awards .cr-awards-label {
-        margin: 0;
-        color: #6d7b91;
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-      }
-
-      #cr-awards .cr-awards-logos {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 28px;
-      }
-
-      #cr-awards .cr-award {
-        display: grid;
-        place-items: center;
-        width: 150px;
-        height: 72px;
-      }
-
-      #cr-awards .cr-award img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-
-      @media (max-width: 600px) {
-        #cr-awards {
-          padding: 32px 0;
-        }
-
-        #cr-awards .cr-awards-logos {
-          gap: 18px;
-        }
-
-        #cr-awards .cr-award {
-          width: 130px;
-          height: 62px;
-        }
-      }
-
-      /* ==========================================
          UPDATE — FOOTER LOGO + SOCIAL BRAND COLOURS
       ========================================== */
       #cf-footer .cf-logo {
@@ -2649,6 +2578,7 @@
         background: var(--cg-red);
       }
 </style>
+    <link rel="stylesheet" href="header-polish.css" />
   </head>
   <body>
     <header class="crib-hdr-wrapper">
@@ -2840,7 +2770,7 @@
                 aria-label="English"
                 aria-current="page"
               >
-                EN
+                English
               </a>
 
               <a
@@ -3741,31 +3671,6 @@
         </svg>
       </button>
     </aside>
-    <!-- AWARDS & RECOGNITION -->
-    <section id="cr-awards" aria-label="Awards and recognition">
-      <div class="cr-awards-wrap">
-        <p class="cr-awards-label">Awards & recognition</p>
-
-        <div class="cr-awards-logos">
-          <div class="cr-award">
-            <img
-              src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/merit-best-corporate-website.png"
-              alt="Best Corporate Website Merit Winner 2023"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="cr-award">
-            <img
-              src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/tags-2025.png"
-              alt="CA Sri Lanka TAGS Awards Compliant 2025"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
     <footer id="cf-footer">
       <div class="cf-wrap">
         <!-- COMPACT CALL TO ACTION -->

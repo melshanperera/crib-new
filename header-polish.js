@@ -1,5 +1,6 @@
 (function () {
   function initHeaderLanguages() {
+    const header = document.querySelector(".crib-hdr-wrapper");
     if (!header) return;
 
     header.querySelectorAll(".cnh-language").forEach((element) => {
@@ -57,7 +58,7 @@
     ];
 
     const languages = [
-      { code: "en", label: "EN", name: "English" },
+      { code: "en", label: "English", name: "English" },
       { code: "si", label: "සිංහල", name: "සිංහල" },
       { code: "ta", label: "தமிழ்", name: "தமிழ்" },
     ];

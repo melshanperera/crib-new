@@ -5100,7 +5100,7 @@
         }
       }
 
-      @media (max-width: 1000px) {
+      @media (max-width: 1180px) {
         .crib-hdr-wrapper .crib-topbar {
           display: none;
         }
@@ -6095,7 +6095,7 @@
         }
       }
       #cf-footer .cf-logo,
-      #cf-footer a[href="home-ewn.html"] {
+      #cf-footer a[href="home.html"] {
         background: transparent;
         border: none;
         box-shadow: none;
@@ -6143,7 +6143,7 @@
          UPDATE — AWARDS SECTION (ABOVE FOOTER)
       ========================================== */
       #cr-awards {
-        padding: 40px 0;
+        padding: 56px 0;
         background: #ffffff !important;
         margin-bottom: 60px;
         border-top: 1px solid #e9edf4;
@@ -6159,18 +6159,44 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 18px;
+        gap: 30px;
         width: min(1400px, calc(100% - 48px));
         margin-inline: auto;
         text-align: center;
       }
 
+      #cr-awards .cr-awards-eyebrow {
+        margin: 0 0 12px;
+        color: #b71f3a;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        line-height: 1.6;
+        text-transform: uppercase;
+      }
+
       #cr-awards .cr-awards-label {
         margin: 0;
-        color: #6d7b91;
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0.04em;
+        color: #102747;
+        font-size: clamp(28px, 3.2vw, 42px);
+        font-weight: 750;
+        letter-spacing: -0.035em;
+        line-height: 1.18;
+        text-wrap: balance;
+      }
+
+      #cr-awards .cr-awards-label span {
+        color: #0477de;
+      }
+
+      #cr-awards .cr-awards-heading::after {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 3px;
+        margin: 20px auto 0;
+        border-radius: 3px;
+        background: #d82845;
       }
 
       #cr-awards .cr-awards-logos {
@@ -6185,7 +6211,7 @@
         display: grid;
         place-items: center;
         width: 150px;
-        height: 72px;
+        height: 150px;
       }
 
       #cr-awards .cr-award img {
@@ -6206,7 +6232,7 @@
 
         #cr-awards .cr-award {
           width: 130px;
-          height: 62px;
+          height: 130px;
         }
       }
 
@@ -6236,6 +6262,7 @@
         filter: brightness(1.12);
       }
     </style>
+    <link rel="stylesheet" href="header-polish.css" />
   </head>
   <body>
     <header class="crib-hdr-wrapper">
@@ -6427,7 +6454,7 @@
                 aria-label="English"
                 aria-current="page"
               >
-                EN
+                English
               </a>
 
               <a
@@ -7923,9 +7950,14 @@
     </aside>
 
     <!-- AWARDS & RECOGNITION -->
-    <section id="cr-awards" aria-label="Awards and recognition">
+    <section id="cr-awards" aria-labelledby="cr-awards-title">
       <div class="cr-awards-wrap">
-        <p class="cr-awards-label">Awards & recognition</p>
+        <div class="cr-awards-heading">
+          <p class="cr-awards-eyebrow">Recognised for excellence</p>
+          <h2 id="cr-awards-title" class="cr-awards-label">
+            Awards <span>&amp; Recognition</span>
+          </h2>
+        </div>
 
         <div class="cr-awards-logos">
           <div class="cr-award">
@@ -7965,7 +7997,7 @@
         <div class="cf-grid">
           <!-- BRAND -->
           <div class="cf-brand">
-            <a class="cf-logo" href="home-ewn.html" aria-label="CRIB home">
+            <a class="cf-logo" href="home.html" aria-label="CRIB home">
               <img
                 src="https://tours.dunkenbakery.com/wp-content/uploads/2026/08/crib-logo-new.png"
                 alt="CRIB Sri Lanka"
