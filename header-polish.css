@@ -13,7 +13,7 @@
 
 .crib-hdr-wrapper .crib-main-nav {
   gap: 18px;
-  min-height: 72px;
+  min-height: 80px;
   padding-block: 8px;
 }
 
@@ -25,9 +25,15 @@
 .crib-hdr-wrapper .crib-logo img,
 .crib-hdr-wrapper.scrolled .crib-logo img {
   width: auto;
-  height: 56px;
-  max-width: 200px;
+  height: 64px;
+  max-width: none;
   object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.crib-hdr-wrapper.scrolled .crib-logo img {
+  filter: brightness(0);
+  opacity: 0.88;
 }
 
 .crib-hdr-wrapper .crib-menu {
@@ -147,8 +153,8 @@
 
   .crib-hdr-wrapper .crib-logo img,
   .crib-hdr-wrapper.scrolled .crib-logo img {
-    height: 48px;
-    max-width: 105px;
+    height: 52px;
+    max-width: none;
   }
 
   .crib-hdr-wrapper .cnh-language {
@@ -168,7 +174,7 @@
 @media (max-width: 360px) {
   .crib-hdr-wrapper .crib-logo img,
   .crib-hdr-wrapper.scrolled .crib-logo img {
-    max-width: 98px;
+    height: 48px;
   }
 
   .crib-hdr-wrapper .crib-main-nav {
